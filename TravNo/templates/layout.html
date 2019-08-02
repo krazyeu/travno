@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tag -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    {% if title %}
+        <title>TravNo - {{ title }}</title>
+    {% else %}
+        <title>TravNo</title>
+    {% endif %}
+
+
+<!-- Style -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<link rel='stylesheet' type="text/css" href="{{ url_for('static', filename='@fullcalendar/core/main.css') }}"  >
+<link rel='stylesheet' type="text/css" href="{{ url_for('static', filename='@fullcalendar/daygrid/main.css') }}" >
+</head>
+<body>
+<!-- NavBar -->
+    <div class="container-fluid">
+        <header class="site-header">
+            <nav class="navbar navbar-custom navbar-fixed-top">
+                <div class="container-fluid">
+                     <div class="navbar-header">
+                        <ul class=" nav navbar-nav">
+                            <li><a class="navbar-brand" href="{{ url_for ('home') }}">Homepage</a>
+                                <a class="navbar-brand" href="{{ url_for ('bypass') }}">Itinerary</a></li>
+                        </ul>
+                     </div>
+                     <div class="container-fluid">
+                         <!-- Register/Login -->
+                        <ul class="nav navbar-nav navbar-right">
+                            {% if current_user.is_authenticated %}
+                            <li><a class="navbar-brand" href="#">Account</a>
+                                <a class="navbar-brand" href="{{ url_for ('logout') }}">logout</a></li>
+                            <!-- Account/Logout -->
+                            {% else %}
+                            <li><a class="navbar-brand" href="register">Register</a>
+                                <a class="navbar-brand" href="{{ url_for ('login') }}">login</a></li>
+                            {% endif %}
+                        </ul>
+                     </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+    <!-- Container for content -->
+    <main role="main" class="container">
+        <div class="body2">
+            <div class="row">
+                  {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                      {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                          {{ message }}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                  {% endwith %}
+                  {% block content %}{% endblock %}
+            </div>
+        </div>
+    </main>
+    <script> 
+    // Initialize and add the map
+function initMap() {
+    // The location of Uluru
+    var uluru = {lat: -25.344, lng: 131.036};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 4, center: uluru});
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: uluru, map: map});
+    }
+    </script>
+    <script> 
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          plugins: [ 'dayGrid' ],
+          defaultView:'dayGridWeek'
+        });
+
+        calendar.render();
+      });
+</script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBwrd9g7HGmRKvtqZTyjfB6mJcD-H0PJY&callback=initMap"></script>
+    <script src="{{ url_for('static', filename='@fullcalendar/core/main.js') }}" type=text/Javascript></script>
+    <script src="{{ url_for('static', filename='@fullcalendar/daygrid/main.js') }}" type=text/Javascript></script>
+</body>
+</html>

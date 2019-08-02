@@ -1,0 +1,88 @@
+.body1{
+  padding-left:200px;
+  margin:0;
+}
+
+.body2{
+  margin-top:50px;
+  border:#8860D0; 
+}
+
+.body3{
+  margin-top:100px;
+}
+
+.navbar-custom {
+background-color:#8860D0;
+  color:#ffffff;
+  border-radius:0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+  color:#fff;
+}
+
+.navbar-custom .navbar-nav > .active > a {
+  color: #ffffff;
+background-color:#8860D0;
+}
+
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus,
+.navbar-custom .navbar-nav > .open >a {
+  text-decoration: none;
+  background-color: #6f4cb0;
+}
+
+.navbar-custom .navbar-brand {
+  color:#eeeeee;
+}
+.navbar-custom .navbar-toggle {
+  background-color:#eeeeee;
+}
+.navbar-custom .icon-bar {
+  background-color:#6f4cb0;
+}
+
+.outer {
+width: 300px;
+height: 500px;
+top: 50%;
+left: 50%;
+position: absolute;
+margin: auto;
+justify-content: center;
+transform: translate(-50%, -50%);
+}
+
+.sidebar{
+ border-style: solid;
+ border-color: #c2c2c2;
+ position: relative;
+ height:100%;
+ width:300px;
+ background:#c8adf7;
+ float: left;
+}
+
+#map {
+ width: 90%;
+ height: 200px;
+ background-color: grey;
+ top: 25%;
+ left: 50%;
+ position: absolute;
+ margin: auto;
+ justify-content: center;
+ transform: translate(-50%, -50%);
+ padding: 10px
+}
+
+.boxcalendar{
+    border:1px solid #000; 
+    height:100%; 
+    padding:10px; 
+    margin-left: 200px
+}

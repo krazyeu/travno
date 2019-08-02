@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="outer">
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                <div class="form-group">
+                    {{ form.iti_code.label(class="form-control-label") }}
+                    {% if form.iti_code.errors %}
+                        {{ form.iti_code(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.iti_code.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.iti_code(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.code.label(class="form-control-label") }}
+                    {% if form.code.errors %}
+                        {{ form.code(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.code.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.code(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-check">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary btn-lg active") }}
+            </div>
+            <small class="text-muted ml-2">
+                <a href="#">Forgot Code?</a>
+            </small>
+        </form>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            No itinerary? <a class="ml-2" href="{{ url_for('register') }}">Create one here</a>
+        </small>
+    </div>
+</div>
+{% endblock content %}

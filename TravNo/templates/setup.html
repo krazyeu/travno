@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="outer">
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">General information for {{ current_user.arr }}</legend>
+                <div class="form-group">
+                    {{ form.start_travel.label(class="form-control-label") }}
+                    {% if form.start_travel.errors %}
+                        {{ form.start_travel(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.start_travel.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.start_travel(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.end_travel.label(class="form-control-label") }}
+                    {% if form.end_travel.errors %}
+                        {{ form.end_travel(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.end_travel.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.end_travel(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.depart_airport.label(class="form-control-label") }}
+                    {% if form.depart_airport.errors %}
+                        {{ form.depart_airport(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.depart_airport.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.depart_airport(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.arrival_airport.label(class="form-control-label") }}
+                    {% if form.arrival_airport.errors %}
+                        {{ form.arrival_airport(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.arrival_airport.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.arrival_airport(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.pax.label(class="form-control-label") }}
+                    {% if form.pax.errors %}
+                        {{ form.pax(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.pax.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.pax(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.flight_tix.label(class="form-control-label") }}
+                    {% if form.flight_tix.errors %}
+                        {{ form.flight_tix(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.flight_tix.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.flight_tix(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.accommodation.label(class="form-control-label") }}
+                    {% if form.accommodation.errors %}
+                        {{ form.accommodation(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.accommodation.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.accommodation(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.style_accommodation.label(class="form-control-label") }}
+                    {% if form.style_accommodation.errors %}
+                        {{ form.style_accommodation(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.style_accommodation.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.style_accommodation(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary btn-lg active") }}
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
